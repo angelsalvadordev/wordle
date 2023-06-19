@@ -4,6 +4,7 @@ import { MAX_TRIES } from "../constants/settings";
 import { updateStats } from "../utils/stats";
 import { solution, nextWordDate, getSolution, splitWord } from "../utils/words";
 import { isAfterDate } from "../utils/date";
+import { wordList } from "../constants/list";
 
 const localGameState = localStorageUtil.getGame();
 const localStatsState = localStorageUtil.getStats();
@@ -28,7 +29,10 @@ const useGame = () => {
 
     if (wonGame || lostGame) return;
 
-    if (splitWord(guess)?.length < solution.length) {
+    if (
+      splitWord(guess)?.length < solution.length ||
+      !wordList.includes(guess)
+    ) {
       if (invalidCurrentRow) return;
 
       setInvalidCurrentRow(true);

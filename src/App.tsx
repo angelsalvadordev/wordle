@@ -82,7 +82,7 @@ function App() {
         toggleDarkMode={toggleDarkMode}
       />
 
-      <div className="pt-20 pb-10">
+      <div className="pt-6 pb-6 md:pt-20 md:pb-10">
         <GameGrid
           guesses={guesses}
           solution={solution}

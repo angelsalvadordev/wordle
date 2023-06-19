@@ -78,7 +78,7 @@ export const getSolution = () => {
   let solution = "";
 
   do {
-    wordIndex = Math.floor(Math.random() * 100);
+    wordIndex = Math.floor(Math.random() * wordList.length);
     solution = wordList[wordIndex];
   } while (currentSolution === solution);
 
