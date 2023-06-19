@@ -29,25 +29,21 @@ function App() {
     timeToChange,
     resetGame,
     stats,
+    invalidCurrentRow,
   } = useGame();
 
-  const {
-    handlePress,
-    handleDelete,
-    handleEnter,
-    currentGuess,
-    clearCurrentGuest,
-  } = useKeyboard({
-    attemptsMade: guesses.length,
-    maxWordSize: solution.length,
-    wonGame,
-    lostGame,
-    onEnter: addGuess,
-  });
+  const { handlePress, handleDelete, handleEnter, currentGuess, clearInput } =
+    useKeyboard({
+      attemptsMade: guesses.length,
+      maxWordSize: solution.length,
+      wonGame,
+      lostGame,
+      onEnter: addGuess,
+    });
 
   const handleResetGame = () => {
     resetGame();
-    clearCurrentGuest();
+    clearInput();
     setOpenIntroModal(false);
     setOpenStatsModal(false);
     setResetKey((prevState) => prevState + 1);
@@ -91,6 +87,7 @@ function App() {
           guesses={guesses}
           solution={solution}
           currentGuess={currentGuess}
+          invalidCurrentRow={invalidCurrentRow}
         />
       </div>
 

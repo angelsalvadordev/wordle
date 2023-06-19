@@ -7,7 +7,7 @@ export interface UseKeyboardProps {
   maxWordSize: number;
   wonGame: boolean;
   lostGame: boolean;
-  onEnter: (value: string) => void;
+  onEnter: (value: string, clearInput: () => void) => void;
 }
 
 const useKeyboard = ({
@@ -34,26 +34,18 @@ const useKeyboard = ({
     setCurrentGuess(splitWord(currentGuess).slice(0, -1).join(""));
   };
 
+  const clearInput = () => setCurrentGuess("");
+
   const handleEnter = () => {
-    const validGuess =
-      splitWord(currentGuess)?.length === maxWordSize &&
-      MAX_TRIES > attemptsMade &&
-      !wonGame;
-
-    if (validGuess) {
-      onEnter(currentGuess);
-      setCurrentGuess("");
-    }
+    onEnter(currentGuess, clearInput);
   };
-
-  const clearCurrentGuest = () => setCurrentGuess("");
 
   return {
     handlePress,
     handleDelete,
     handleEnter,
     currentGuess,
-    clearCurrentGuest,
+    clearInput,
   };
 };
 

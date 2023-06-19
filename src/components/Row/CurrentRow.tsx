@@ -5,14 +5,15 @@ import LetterBox from "../LetterBox/LetterBox";
 
 export interface CurrentRowProps {
   guess: string;
+  className: string;
 }
 
-const CurrentRow: FC<CurrentRowProps> = ({ guess }) => {
+const CurrentRow: FC<CurrentRowProps> = ({ guess, className }) => {
   const wordSplitted = splitWord(guess);
   const emptyBoxes = Array.from(Array(SOLUTION_SIZE - wordSplitted.length));
 
   return (
-    <div className="flex gap-3 mb-4">
+    <div className={`flex gap-3 mb-4 ${className}`}>
       {wordSplitted.map((letter, i) => (
         <LetterBox key={i} value={letter} />
       ))}

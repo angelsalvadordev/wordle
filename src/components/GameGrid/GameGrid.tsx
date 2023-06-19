@@ -8,9 +8,15 @@ export interface GameGridProps {
   guesses: string[];
   solution: string;
   currentGuess: string;
+  invalidCurrentRow: boolean;
 }
 
-const GameGrid: FC<GameGridProps> = ({ guesses, solution, currentGuess }) => {
+const GameGrid: FC<GameGridProps> = ({
+  guesses,
+  solution,
+  currentGuess,
+  invalidCurrentRow,
+}) => {
   const emptiesRows =
     guesses.length < MAX_TRIES
       ? Array.from(Array(MAX_TRIES - 1 - guesses.length))
@@ -22,7 +28,12 @@ const GameGrid: FC<GameGridProps> = ({ guesses, solution, currentGuess }) => {
         <Row key={i} guess={guess} solution={solution} />
       ))}
 
-      {MAX_TRIES > guesses.length && <CurrentRow guess={currentGuess} />}
+      {MAX_TRIES > guesses.length && (
+        <CurrentRow
+          guess={currentGuess}
+          className={invalidCurrentRow ? "shake" : ""}
+        />
+      )}
 
       {emptiesRows.map((_, index) => (
         <EmptyRow key={index} />

@@ -21,7 +21,6 @@ const StatsModal: FC<StatsModalProps> = ({
   stats,
   solution,
 }) => {
-  console.log("ejecutado");
   return (
     <Modal title="Estadísticas" openModal={openModal} handleClose={handleClose}>
       <div className="flex flex-col items-center">

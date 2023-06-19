@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { localStorageUtil } from "../utils/localStorage";
 import { MAX_TRIES } from "../constants/settings";
 import { updateStats } from "../utils/stats";
-import { solution, nextWordDate, getSolution } from "../utils/words";
+import { solution, nextWordDate, getSolution, splitWord } from "../utils/words";
 import { isAfterDate } from "../utils/date";
 
 const localGameState = localStorageUtil.getGame();
@@ -12,6 +12,7 @@ const useGame = () => {
   const [currentSolution, setCurrentSolution] = useState(
     localGameState.solution || solution
   );
+  const [invalidCurrentRow, setInvalidCurrentRow] = useState(false);
   const [timeToChange, setTimeToChange] = useState(
     localGameState.timeToChange && !isAfterDate(localGameState.timeToChange)
       ? localGameState.timeToChange
@@ -22,11 +23,23 @@ const useGame = () => {
   const [lostGame, setLostGame] = useState(false);
   const [stats, setStats] = useState(localStatsState);
 
-  const addGuess = (guess: string): void => {
-    if (wonGame || lostGame) {
+  const addGuess = (guess: string, clearInput: () => void): void => {
+    if (MAX_TRIES < guesses.length) return;
+
+    if (wonGame || lostGame) return;
+
+    if (splitWord(guess)?.length < solution.length) {
+      if (invalidCurrentRow) return;
+
+      setInvalidCurrentRow(true);
+      setTimeout(() => {
+        setInvalidCurrentRow(false);
+      }, 500);
+
       return;
     }
 
+    clearInput();
     const newGuesses = [...guesses, guess];
 
     if (guess === currentSolution) {
@@ -79,6 +92,7 @@ const useGame = () => {
     stats,
     timeToChange,
     resetGame,
+    invalidCurrentRow,
   };
 };
 
