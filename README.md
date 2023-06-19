@@ -34,4 +34,4 @@ Puedes instalar los modulos via `npm` o `yarn`
 
 ## 👀 Demo
 
-[Wordle App](https://skydropx-challenge-two.vercel.app/)
+[Wordle App](https://dd3-wordle.vercel.app/)
