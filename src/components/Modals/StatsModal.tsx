@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Modal from "./Modal";
 import { ModalProps } from "./Modal";
-import Button from "../Button/Button";
+import Button from "../Button";
 import Countdown from "react-countdown";
 import Clock from "../Clock";
 import { GameStatStateProps } from "../../utils/localStorage";

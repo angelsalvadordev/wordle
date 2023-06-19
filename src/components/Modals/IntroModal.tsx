@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Modal, { ModalProps } from "./Modal";
-import Button from "../Button/Button";
+import Button from "../Button";
 import ExampleRow from "../Row/ExampleRow";
 import {
   firstGuessExample,
