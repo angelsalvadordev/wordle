@@ -21,25 +21,32 @@ const StatsModal: FC<StatsModalProps> = ({
   stats,
   solution,
 }) => {
+  console.log("ejecutado");
   return (
     <Modal title="Estadísticas" openModal={openModal} handleClose={handleClose}>
       <div className="flex flex-col items-center">
         <div className="flex justify-between max-w-[375px] w-full gap-5">
           <div className="flex flex-col items-center">
-            <p className="font-extrabold text-4xl mb-4">{stats.totalGames}</p>
-            <p className="text-xl">Jugadas</p>
+            <p className="font-extrabold text-4xl mb-4 dark:text-white">
+              {stats.totalGames}
+            </p>
+            <p className="text-xl dark:text-white">Jugadas</p>
           </div>
 
           <div className="flex flex-col items-center">
-            <p className="font-extrabold text-4xl mb-4">{stats.victories}</p>
-            <p className="text-xl">Victorias</p>
+            <p className="font-extrabold text-4xl mb-4 dark:text-white">
+              {stats.victories}
+            </p>
+            <p className="text-xl dark:text-white">Victorias</p>
           </div>
         </div>
 
         {lostGame && (
-          <p className="mb-4 mt-12">
+          <p className="mb-4 mt-12 dark:text-white">
             La palabra era:{" "}
-            <span className="font-bold text-lg">{solution}</span>
+            <span className="font-bold text-lg dark:text-white">
+              {solution}
+            </span>
           </p>
         )}
 
@@ -48,7 +55,7 @@ const StatsModal: FC<StatsModalProps> = ({
             lostGame ? "mt-4" : "mt-14"
           } mb-9`}
         >
-          <p className="mb-2 text-lg">SIGUIENTE PALABRA</p>
+          <p className="mb-2 text-lg dark:text-white">SIGUIENTE PALABRA</p>
           <Countdown
             date={timeToChange}
             renderer={({ minutes, seconds }) => (

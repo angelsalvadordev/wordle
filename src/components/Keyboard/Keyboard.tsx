@@ -41,8 +41,8 @@ const Keyboard: FC<KeyboardProps> = ({
   };
 
   return (
-    <div className="bg-gray-4/[0.3] p-5 rounded-2xl">
-      <div className="mb-1 flex justify-center gap-3">
+    <div className="md:bg-gray-4/[0.3] w-full md:w-auto md:p-5 rounded-2xl md:dark:bg-gray-4/[.03]">
+      <div className="mb-1 flex justify-center gap-1 md:gap-3">
         {firstRowKeyboard.map((key) => (
           <Key
             value={key}
@@ -53,7 +53,7 @@ const Keyboard: FC<KeyboardProps> = ({
         ))}
       </div>
 
-      <div className="mb-1 flex justify-center gap-3 ml-8 mt-3">
+      <div className="mb-1 flex justify-center gap-1 md:gap-3 mt-1 md:ml-8 md:mt-3">
         {secondRowKeyboard.map((key) => (
           <Key
             value={key}
@@ -64,9 +64,9 @@ const Keyboard: FC<KeyboardProps> = ({
         ))}
       </div>
 
-      <div className="mb-1 flex justify-center gap-3 mr-11 mt-3">
+      <div className="mb-1 flex justify-center gap-1 md:gap-3 mt-1 md:mr-11 md:mt-3">
         <Key width={71} fontSize={15} value={enterKey.value} onClick={onClick}>
-          {enterKey.text}
+          <span className="text-xs md:text-sm">{enterKey.text}</span>
         </Key>
 
         {thirdRowKeyboard.map((key) => (

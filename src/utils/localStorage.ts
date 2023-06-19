@@ -11,6 +11,7 @@ export interface GameStatStateProps {
 
 const gameKey = "dd3Game";
 const gameStatsKey = "dd3Stats";
+const themeKey = "dd3Theme";
 
 export const initialGame: GameStateProps = {
   guesses: [],
@@ -41,9 +42,20 @@ export const getStats = (): GameStatStateProps => {
   return stats ? JSON.parse(stats) : initialStats;
 };
 
+export const getTheme = (): string => {
+  const localTheme = localStorage.getItem(themeKey);
+  return localTheme || "";
+};
+
+export const saveTheme = (dark: boolean): void => {
+  localStorage.setItem(themeKey, dark ? "dark" : "light");
+};
+
 export const localStorageUtil = {
   saveGame,
   getGame,
   saveStats,
   getStats,
+  getTheme,
+  saveTheme,
 };

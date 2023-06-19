@@ -19,12 +19,7 @@ const GameGrid: FC<GameGridProps> = ({ guesses, solution, currentGuess }) => {
   return (
     <>
       {guesses.map((guess, i) => (
-        <Row
-          key={i}
-          guess={guess}
-          solution={solution}
-          //  isRevealing={isRevealing && guesses.length - 1 === i}
-        />
+        <Row key={i} guess={guess} solution={solution} />
       ))}
 
       {MAX_TRIES > guesses.length && <CurrentRow guess={currentGuess} />}

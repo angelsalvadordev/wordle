@@ -22,7 +22,7 @@ const Modal: FC<ModalProps> = ({ title, children, openModal }) => {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-gray-2 bg-opacity-80" />
+          <div className="fixed inset-0 bg-gray-2 bg-opacity-80 dark:bg-dark-blue dark:bg-opacity-80" />
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto">
@@ -36,7 +36,7 @@ const Modal: FC<ModalProps> = ({ title, children, openModal }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-[546px] transform overflow-hidden rounded-2xl bg-gray-2 border-solid border-black border px-12 py-14 text-left align-middle shadow-xl transition-all">
+              <Dialog.Panel className="w-full max-w-[546px] transform overflow-hidden rounded-2xl bg-gray-2 dark:bg-dark-blue border-solid border-black dark:border-gray-5 border px-6 py-10 md:px-12 md:py-14 text-left align-middle shadow-xl transition-all">
                 <Dialog.Title
                   as="h3"
                   className="text-4xl font-extrabold leading-6 text-black dark:text-white text-center mb-12"

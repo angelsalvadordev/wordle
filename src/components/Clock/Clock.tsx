@@ -11,7 +11,7 @@ const Clock: FC<ClockProps> = ({ minutes, seconds }) => {
   };
 
   return (
-    <div className="font-bold text-2xl">
+    <div className="font-bold text-2xl dark:text-white">
       {numberFormatted(minutes)}:{numberFormatted(seconds)}
     </div>
   );
